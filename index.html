@@ -1,0 +1,69 @@
+<style>
+    .nameError,.emailError,.phoneError{
+        color: red;
+        display: none;
+    }
+</style>
+
+
+<div>
+ <form>
+    <input type="text" placeholder="Name" id="Name">
+    <span class="nameError"> Name must contains only Letters</span>
+    <br>
+    <input type="text" placeholder="Email" id="Email">
+    <span class="emailError"> Email must contains valid Gmail Address</span>
+    <br>
+    <input type="text" placeholder="Phone" id="Phone">
+    <span class="phoneError"> Number must contains only 10 Digit Numbers</span>
+    <br>
+    <input type="submit" id="submit">
+ </form>
+
+
+</div>
+<script>
+    var submit = document.getElementById("submit")
+    submit.addEventListener("click", function(){
+      event.preventDefault() 
+      var nameRegex=/^[a-zA-Z]+$/  
+      var emailRegex=/^[a-zA-z]+@gmail.com/
+      var phoneRegex=/^\d{10}$/
+      
+      var name=document.getElementById("Name")
+      var email=document.getElementById("Email")
+      var phone=document.getElementById("Phone")
+      
+      var validate = true
+
+      if(nameRegex.test(name.value)==false)
+      {
+        document.querySelector(".nameError").style.display="inline"
+        validate= false
+      }
+      else{
+        document.querySelector(".nameError").style.display="none"
+      }
+      if(emailRegex.test(email.value)==false)
+      {
+        document.querySelector(".EmailError").style.display="inline"
+        validate= false
+      }
+      else{
+        document.querySelector(".EmailError").style.display="none"
+      }
+      if(phoneRegex.test(phone.value)==false)
+      {
+        document.querySelector(".PhoneError").style.display="inline"
+        validate= false
+      }
+      else{
+        document.querySelector(".PhoneError").style.display="none"
+      }
+      if(validate==true)
+      {
+        alert("Form Submitted Successfully")
+      }
+
+    })
+</script>
